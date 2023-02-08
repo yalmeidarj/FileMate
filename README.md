@@ -1,12 +1,12 @@
 # LocalBot Class - Introduction
 
-LocalBot is a class representing a bot with a local path and optional user name and password. It provides methods to update the directory location, get a list of all the files, rename a file, sort files, and create a new file in the local path.
+LocalBot is a class representing a bot. It provides methods to update directory location, get a list of all the files, rename a file, sort files, create a new file, send WhatsApp message, send emails, and create new directorys in the local path.
 
 ## Class Attributes
 
 ### local_path (str, optional):
 
-The local path where the bot will create or update the files. Default is 'C:/Users/yalme/Desktop/BotEntry'.
+The local path where the bot will create or update the files. Default is {desktop_path}.
 
 ### user_name (str, optional):
 

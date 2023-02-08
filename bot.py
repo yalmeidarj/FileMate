@@ -4,68 +4,21 @@ import pywhatkit
 import shutil
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
-
-
-import sqlite3
-
 import os
 
-from google.oauth2.credentials import Credentials
-from googleapiclient.discovery import build
 
-
-calendar_id = "yalmeida.rj@gmail.com"
-# creds = Credentials.from_authorized_user_file('C:/Users/yalme/Desktop/ChatGPT/client_secret_833433804527-3fhghtg07tski5qmkdi0oaoj6hpqtrdi.apps.googleusercontent.com.json')
-# api_key = "AIzaSyAXH3TYwuF0wszWhJioNpTAOlItZxeqIYU"
-# service = build('calendar', 'v3', credentials=creds)
-# calendar = service.calendars().get(calendarId='primary').execute()
-SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
-
-# class TimeManager:
-#     def __init__(self):
-#         self.creds = None
-#         self.db = sqlite3.connect('events.db')
-#         self.load_credentials()
-
-#     def load_credentials(self):
-#         """Loads the credentials from a token.json file if it exists, 
-#         otherwise prompts the user to log in and grant access."""
-#         if os.path.exists('token.json'):
-#             self.creds = Credentials.from_authorized_user_file('token.json')
-#         else:
-#             pass
-#             # Prompt user to log in and grant access
-#             # Code to do so goes here
-
-#     def addEvent(self, duration, description):
-#         """Adds a new event to the Google Calendar with the specified duration and description."""
-#         service = build('calendar', 'v3', credentials=self.creds)
-#         event = {
-#             'summary': description,
-#             'start': {
-#                 'dateTime': datetime.utcnow().isoformat() + 'Z',
-#                 'timeZone': 'UTC',
-#             },
-#             'end': {
-#                 'dateTime': (datetime.utcnow() + datetime.timedelta(hours=duration)).isoformat() + 'Z',
-#                 'timeZone': 'UTC',
-#             },
-#         }
-#         event = service.events().insert(calendarId=calendar_id, body=event).execute()
-#         print(f'Event created: {event.get("htmlLink")}')
-
-
+desktop_path = 'C:/Users/user/your_path_here'
 class LocalBot:
     """
     A class representing a LocalBot with a local_path and optional user_name and password.
     
     Attributes:
-    local_path (str, optional): The local path where the bot will create or update the files. Default is 'C:/Users/yalme/Desktop/BotEntry'.
+    local_path (str, optional): The local path where the bot will create or update the files. Default is {desktop_path}.
     user_name (str, optional): The user name to use when accessing the bot.
     password (str, optional): The password to use when accessing the bot.
     
     """    
-    def __init__(self, local_path='C:/Users/yalme/Desktop', user_name=None, password=None):
+    def __init__(self, local_path=desktop_path, user_name=None, password=None):
         self.local_path = local_path
         self.user_name = user_name
         self.password = password
@@ -187,7 +140,7 @@ class LocalBot:
             file.write(context)
         print(f"File '{my_file}' created successfully!")
 
-    def update_file(filename, file_type, context, path=None):
+    def update_file(self, filename, file_type, context, path=None):
         """
         Update an existing file with given filename, file_type, and context. 
         
